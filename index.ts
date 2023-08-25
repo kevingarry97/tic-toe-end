@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from "mongoose";
 import GameRoute from "./routes/games";
 import bodyParser from "body-parser";
+import cors from 'cors';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ mongoose
   })
   .catch((error) => console.log(error));
 
+app.use(cors({ origin: '*', credentials: true }));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
